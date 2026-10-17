@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Michael, pour moi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0820;--bg2:#15103a;--gold:#f2c14e;--red:#e0262f;--teal:#5fd0d8;--violet:#8a5cff;--ink:#f3efff;--mut:#b7b0d6;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;line-height:1.1;margin:0 0 .6em}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:8px;overflow-x:auto;padding:12px 16px;background:rgba(11,8,32,.96);scrollbar-width:none}
+nav a{flex:none;color:var(--ink);text-decoration:none;font-size:.85rem;padding:6px 14px;border-radius:99px;border:1px solid rgba(242,193,78,.4);transition:.3s}
+nav a:hover,nav a:focus-visible{background:var(--gold);color:#1a1230;outline:none}
+section{padding:90px 22px;max-width:1000px;margin:auto}
+.hero{min-height:92vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;text-align:center;position:relative;overflow:hidden;max-width:none;background:radial-gradient(ellipse at 50% 0,#3a1f7a 0,var(--bg) 65%)}
+.beam{will-change:transform;position:absolute;top:-10%;width:30vw;height:120%;background:linear-gradient(to bottom,rgba(242,193,78,.28),transparent 80%);transform-origin:top;clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);animation:sweep 9s ease-in-out infinite alternate}
+.beam.b1{left:8%;--a:-18deg}.beam.b2{right:8%;--a:18deg;animation-delay:-4s;background:linear-gradient(to bottom,rgba(224,38,47,.25),transparent 80%)}
+@keyframes sweep{from{transform:rotate(var(--a))}to{transform:rotate(calc(var(--a)*-1))}}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s infinite}
+@keyframes tw{50%{opacity:.15}}
+.vinyl{width:min(56vw,230px);margin:0 auto 26px;border-radius:50%;box-shadow:0 0 40px rgba(242,193,78,.35);will-change:transform;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-in{position:relative;z-index:2;width:100%;padding:20px;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}}
+.hero h1{font-size:clamp(2.4rem,9vw,5.6rem);background:linear-gradient(100deg,#fff,var(--gold) 50%,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:520px;margin:0 auto}
+.tag{display:inline-block;font-size:.8rem;color:var(--gold);margin-bottom:14px}
+h2{font-size:clamp(1.9rem,6vw,3.2rem)}
+p{max-width:640px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}.rv.on{opacity:1;transform:none}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:center}
+@media(min-width:780px){.split{grid-template-columns:1fr 1fr}.split.rev>:first-child{order:2}}
+.art{width:100%;border-radius:24px;background:var(--bg2);border:1px solid rgba(255,255,255,.08)}
+blockquote{margin:30px 0 0;padding-left:20px;border-left:3px solid var(--gold);font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.3rem;max-width:560px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.song{--c:var(--gold);text-align:left;font:inherit;color:inherit;cursor:pointer;padding:22px;border-radius:22px;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 22%,var(--bg2)),var(--bg2));transition:transform .4s,box-shadow .4s}
+.song:hover,.song:focus-visible{transform:translateY(-6px);box-shadow:0 14px 40px color-mix(in srgb,var(--c) 35%,transparent);outline:none}
+.song h3{font-size:1.5rem;color:var(--c);margin-bottom:.2em}
+.song small{color:var(--mut)}
+.song .more{max-height:0;overflow:hidden;transition:max-height .6s ease;margin:0}
+.song.open .more{max-height:260px;margin-top:12px}
+.song .ic{font-size:1.6rem;display:block;margin-bottom:6px}
+.msg{padding:26px;border-radius:22px;background:var(--bg2);border-top:3px solid var(--c);--c:var(--teal)}
+.msg h3{color:var(--c)}
+.concert{background:linear-gradient(to bottom,var(--bg),#240b2e 60%,var(--bg));max-width:none}
+.concert>div{max-width:1000px;margin:auto}
+.letter{background:#f6ecd2;color:#2a1d3a;padding:34px 28px;border-radius:6px;max-width:640px;margin:30px auto 0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;line-height:1.8;box-shadow:0 30px 60px rgba(0,0,0,.5);transform:rotate(-1deg)}
+.letter p{max-width:none;margin:0 0 1em}
+.child{max-width:none;background:linear-gradient(to bottom,var(--bg),#0b2a3d 50%,var(--bg));text-align:center;position:relative;overflow:hidden}
+.child>div{max-width:680px;margin:auto;position:relative;z-index:2}
+.child h2{color:var(--teal)}.child p{margin-inline:auto}
+.moon{width:120px;height:120px;border-radius:50%;margin:0 auto 24px;background:radial-gradient(circle at 35% 35%,#fff,#bfeef2 60%,#5fd0d8);box-shadow:0 0 70px rgba(95,208,216,.6);animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-16px)}}
+.wave{display:flex;justify-content:center;gap:5px;height:50px;align-items:center;margin-top:30px}
+.wave b{width:4px;background:var(--teal);border-radius:4px;animation:eq 3s ease-in-out infinite}
+@keyframes eq{50%{height:8px}}
+.end{text-align:center}.end p{margin-inline:auto}
+.big{font-family:'Bodoni Moda',serif;font-size:clamp(1.6rem,5vw,2.6rem);color:var(--gold);max-width:760px;margin:30px auto}
+footer{text-align:center;padding:40px 20px;color:var(--mut);font-size:.85rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.pg{display:none}.pg.act{display:block;animation:pgin .8s cubic-bezier(.2,.8,.2,1) both}.hero.pg.act{display:grid}.split.pg.act{display:grid}
+@keyframes pgin{from{opacity:0;transform:translateY(20px) scale(.99)}}
+nav a.cur{background:var(--gold);color:#1a1230}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:760px;margin:34px auto 0}
+.cats a{--c:var(--gold);display:block;padding:18px 12px;border-radius:20px;text-decoration:none;color:var(--ink);border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 28%,var(--bg2)),var(--bg2));transition:transform .4s,box-shadow .4s;animation:rise 1.2s both}
+.cats a:hover,.cats a:focus-visible{transform:translateY(-6px) rotate(-1deg);box-shadow:0 12px 34px color-mix(in srgb,var(--c) 40%,transparent);outline:none}
+.cats span{display:block;font-size:1.8rem}.cats b{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--c)}
+.earth{background:radial-gradient(ellipse at 30% 0,#0e3b2e,transparent 60%)}
+.globe{width:100%;max-width:340px;margin:auto;display:block;border-radius:50%;box-shadow:0 0 50px rgba(79,179,255,.4);will-change:transform;animation:float 8s ease-in-out infinite}
+.land{animation:drift 22s linear infinite}
+@keyframes drift{to{transform:translateX(-240px)}}
+.halo{transform-origin:center;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.4}}
+.earth h2{color:#6be39a}.earth blockquote{border-color:#4fb3ff}
+.notes{position:absolute;inset:0;pointer-events:none;z-index:1}
+.notes s{position:absolute;bottom:-30px;text-decoration:none;color:var(--gold);opacity:0;font-size:1.5rem;animation:up 9s linear infinite}
+@keyframes up{10%{opacity:.5}to{transform:translateY(-105vh) rotate(25deg);opacity:0}}
+.cats span{display:inline-block;animation:bob 3.5s ease-in-out infinite}
+.cats a:nth-child(even) span{animation-delay:-1.7s}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.song .ic{display:inline-block;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}.song.open .ic{transform:scale(1.3) rotate(-12deg)}
+.pg.act .letter p{animation:ink .9s both;animation-delay:calc(var(--i,0)*.45s)}
+@keyframes ink{from{opacity:0;transform:translateY(10px)}}
+.fl{opacity:0;animation:fl 4s infinite}
+@keyframes fl{3%{opacity:1}7%{opacity:0}}
+.shoot{position:absolute;top:8%;left:-15%;width:100px;height:2px;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:shoot 8s ease-in infinite}
+.shoot.s2{top:30%;animation-delay:-4s}
+@keyframes shoot{0%{transform:translate(0,0) rotate(22deg);opacity:0}4%{opacity:1}22%{transform:translate(120vw,50vh) rotate(22deg);opacity:0}100%{opacity:0}}
+details{margin-top:20px;max-width:640px}
+summary{cursor:pointer;color:var(--gold);list-style:none;padding:10px 18px;border:1px solid rgba(242,193,78,.4);border-radius:99px;display:inline-block;transition:background .3s,color .3s}
+summary::-webkit-details-marker{display:none}
+summary:hover,details[open]>summary{background:var(--gold);color:#1a1230}
+details>div{animation:pgin .7s cubic-bezier(.22,1,.36,1) both;padding-top:14px}
+details h3{font-size:1.4rem;margin:1.4em 0 .4em;color:var(--gold)}
+blockquote p{margin:0 0 .8em}blockquote.long{font-size:1.1rem}
+.child details{margin-inline:auto}.child details>div{text-align:left}.child details h3{color:var(--teal)}
+</style></head><body>
+<nav aria-label="Catégories">
+<a href="#accueil">Accueil</a><a href="#pourquoi">Pourquoi</a><a href="#chansons">Chansons</a><a href="#messages">Messages</a><a href="#earthsong">Earth Song</a><a href="#artiste">L’artiste</a><a href="#concert">Concert rêvé</a><a href="#lettre">Lettre</a><a href="#childhood">Childhood</a><a href="#monde">Le monde</a><a href="#conclusion">Conclusion</a></nav>
+
+<header class="hero pg" id="accueil">
+<div class="beam b1"></div><div class="beam b2"></div><div class="stars" id="stars"></div><div class="notes" id="notes"></div>
+<div class="hero-in">
+<svg class="vinyl" viewBox="0 0 200 200" aria-hidden="true"><defs><radialGradient id="g"><stop offset="0" stop-color="#2a2060"/><stop offset="1" stop-color="#05030f"/></radialGradient></defs>
+<circle cx="100" cy="100" r="98" fill="url(#g)" stroke="#f2c14e" stroke-width="2"/>
+<g fill="none" stroke="#f2c14e" stroke-opacity=".25"><circle cx="100" cy="100" r="85"/><circle cx="100" cy="100" r="72"/><circle cx="100" cy="100" r="59"/><circle cx="100" cy="100" r="46"/></g>
+<circle cx="100" cy="100" r="30" fill="#e0262f"/><path d="M100 80l4 12h13l-10 8 4 12-11-8-11 8 4-12-10-8h13z" fill="#f2c14e"/><circle cx="100" cy="100" r="3" fill="#05030f"/></svg>
+<span class="tag">Une passion, des émotions, une musique</span>
+<h1>Michael, pour moi</h1>
+<p>Le Roi de la Pop pour le monde. Ici, ce que sa musique me fait ressentir, avec mes mots.</p>
+<div class="cats">
+<a href="#pourquoi" style="--c:#f2c14e;animation-delay:.2s"><span>⭐</span><b>Pourquoi</b></a>
+<a href="#chansons" style="--c:#8fd3ff;animation-delay:.3s"><span>🎶</span><b>Chansons</b></a>
+<a href="#messages" style="--c:#6be39a;animation-delay:.4s"><span>🌍</span><b>Messages</b></a>
+<a href="#earthsong" style="--c:#4fb3ff;animation-delay:.45s"><span>🌎</span><b>Earth Song</b></a>
+<a href="#artiste" style="--c:#f28bb8;animation-delay:.48s"><span>🎭</span><b>L’artiste</b></a>
+<a href="#concert" style="--c:#e0262f;animation-delay:.5s"><span>🎤</span><b>Concert rêvé</b></a>
+<a href="#lettre" style="--c:#c28bff;animation-delay:.6s"><span>💌</span><b>Lettre</b></a>
+<a href="#childhood" style="--c:#5fd0d8;animation-delay:.7s"><span>🩵</span><b>Childhood</b></a>
+<a href="#monde" style="--c:#f28bb8;animation-delay:.8s"><span>🕊️</span><b>Le monde</b></a>
+<a href="#conclusion" style="--c:#ffd98a;animation-delay:.9s"><span>✨</span><b>Conclusion</b></a>
+</div>
+</div></header>
+
+<section id="pourquoi" class="split pg">
+<svg class="art rv" viewBox="0 0 400 340" aria-hidden="true"><defs><linearGradient id="s1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1f7a"/><stop offset="1" stop-color="#e0262f"/></linearGradient></defs><rect width="400" height="340" fill="url(#s1)" opacity=".5"/><g fill="#f2c14e"><path d="M200 70l8 24h26l-21 15 8 25-21-15-21 15 8-25-21-15h26z"/><circle cx="90" cy="90" r="3"/><circle cx="320" cy="130" r="4"/><circle cx="60" cy="200" r="2"/><circle cx="340" cy="240" r="3"/></g><path d="M40 250q40-50 80 0t80 0 80 0 80 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/><path d="M40 285q40-50 80 0t80 0 80 0 80 0" fill="none" stroke="#5fd0d8" stroke-width="3" stroke-linecap="round" opacity=".7"/></svg>
+<div class="rv"><span class="tag">Partie 1</span><h2>Pourquoi j'aime autant Michael</h2>
+<p>Michael Jackson n'est pas seulement un chanteur dont j'écoute les musiques de temps en temps. Sa voix, ses chansons, ses performances et son histoire me touchent profondément.</p>
+<p>Sa musique me fait ressentir des émotions que je ne sais pas toujours expliquer avec des mots. Il pouvait faire danser des millions de personnes, mais aussi les inviter à réfléchir et à regarder le monde autrement.</p>
+<blockquote>Quand je n'arrive plus à expliquer ce que je ressens, je remets simplement une chanson.</blockquote>
+<details><summary>Lire la suite</summary><div>
+<p>Quand je parle de Michael, je ne parle pas uniquement de sa célébrité, de ses pas de danse ou de ses records. Je peux écouter ses chansons en boucle sans m’en lasser, et il m’arrive de redécouvrir un titre que je connaissais de nom avant de finir par l’aimer énormément.</p>
+<p>Certaines chansons me donnent envie de danser, d’autres m’apaisent, d’autres me font réfléchir. Je ne ressens pas la même chose à chaque écoute, et c’est ce que j’aime dans son répertoire. Je n’ai pas besoin que tout le monde ressente la même chose pour savoir ce que sa musique représente dans ma vie.</p>
+<h3>Ce que je n’arrive pas toujours à expliquer</h3>
+<p>Comment expliquer qu’une chanson nous touche autant ? Qu’un artiste que nous n’avons jamais rencontré occupe une place aussi importante dans notre quotidien ? Que l’idée de ne jamais l’avoir vu sur scène nous rende triste, alors que nous sommes arrivés après son époque ? Je ne prétends pas le connaître personnellement. Je sais simplement que son œuvre a pris une place particulière dans ma vie.</p>
+<p>Quand j’entends certaines personnes parler de lui avec mépris, cela me fait de la peine : j’ai l’impression que toute une vie est réduite à quelques insultes. Avant d’être une célébrité mondiale, Michael était un être humain, avec une histoire, une famille et une enfance. Cela ne veut pas dire qu’il faut interdire les critiques : les sujets sérieux méritent d’être examinés avec attention. Mais il y a une différence entre chercher à comprendre une histoire et s’en servir pour humilier quelqu’un.</p>
+<p>Je voudrais parler de lui sans que les insultes remplacent les arguments, ni que les émotions nous empêchent de distinguer les faits des suppositions. Parfois, la musique exprime ce que les mots ne parviennent pas à traduire.</p>
+<h3>Michael dans mon quotidien</h3>
+<p>Il y a les chansons que je connais, celles que je redécouvre et celles que je remets plusieurs fois. Ma playlist évolue : certains titres reviennent après des semaines, d’autres deviennent de nouvelles habitudes. Parfois j’ai envie d’un morceau énergique, parfois de quelque chose de calme qui met le reste de ma journée entre parenthèses.</p>
+<p>Je parle tellement de Michael que les gens autour de moi le remarquent. Ce qui me fait plaisir, c’est quand certains finissent par écouter ses chansons après m’en avoir entendu parler. Je n’ai pas besoin qu’ils deviennent fans : qu’ils apprécient une mélodie me suffit. La musique crée des liens inattendus.</p>
+<p>Être fan, ce n’est pas seulement connaître un artiste par cœur, c’est continuer à explorer son travail, apprendre et partager. Michael Jackson appartient à l’histoire de la musique, mais son œuvre continue de faire partie de mon présent.</p>
+</div></details></div>
+</section>
+
+<section id="chansons" class="pg">
+<div class="rv"><span class="tag">Mes chansons</span><h2>Ces chansons qui me font ressentir l'impossible</h2><p>Chacune a sa propre identité. Touche une carte pour lire ce qu'elle me fait.</p></div>
+<div class="grid rv">
+<button class="song" style="--c:#8fd3ff"><span class="ic">🕊️</span><h3>Liberian Girl</h3><small>Cette impression de m'envoler</small><p class="more">Sa voix, la mélodie et l'atmosphère me donnent presque l'impression de m'envoler. Je me laisse porter sans réfléchir à rien. Une de mes plus belles découvertes.</p></button>
+<button class="song" style="--c:#6be39a"><span class="ic">🌍</span><h3>Heal the World</h3><small>Un message qui dépasse la musique</small><p class="more">La compassion, la façon dont nous traitons les autres, le monde que nous laissons aux générations suivantes. La musique sert aussi à faire réfléchir.</p></button>
+<button class="song" style="--c:#f2c14e"><span class="ic">🌙</span><h3>Smile</h3><small>La douceur et la sensibilité</small><p class="more">Une musique n'a pas besoin d'être spectaculaire pour provoquer une émotion. Une mélodie et une interprétation suffisent pour accompagner un moment calme.</p></button>
+<button class="song" style="--c:#5fd0d8"><span class="ic">🩵</span><h3>Childhood</h3><small>Calme et tristesse à la fois</small><p class="more">Sa mélodie m'apaise au point de presque m'endormir, mais son message me serre le cœur. Elle a droit à un chapitre entier, plus bas.</p></button>
+<button class="song" style="--c:#e0262f"><span class="ic">⚡</span><h3>Thriller</h3><small>Un univers spectaculaire</small><p class="more">Une ambiance reconnaissable, une chanson qui a marqué la culture populaire. L'autre facette, celle qui me donne envie de bouger.</p></button>
+<button class="song" style="--c:#c28bff"><span class="ic">✊</span><h3>They Don't Care About Us</h3><small>La colère face à l'injustice</small><p class="more">Une expression plus revendicatrice de son art, contre l'injustice et le sentiment d'être ignoré ou maltraité.</p></button>
+</div></section>
+
+<section id="messages" class="pg">
+<div class="rv"><span class="tag">Ses messages</span><h2>Ce que je trouve dans sa musique</h2><p>Une partie de son œuvre ne cherche pas seulement à divertir. Une chanson ne résout pas les problèmes du monde, mais elle peut faire naître une question.</p></div>
+<div class="grid rv" style="margin-top:26px">
+<div class="msg" style="--c:#6be39a"><h3>Heal the World</h3><p>Compassion, solidarité, possibilité d'un monde meilleur.</p></div>
+<div class="msg" style="--c:#c28bff"><h3>They Don't Care About Us</h3><p>Une colère face à l'injustice et au sentiment d'être ignoré.</p></div>
+<div class="msg" style="--c:#5fd0d8"><h3>Earth Song</h3><p>Les souffrances de la planète et les conséquences de nos actions.</p></div>
+</div></section>
+
+<section id="earthsong" class="split earth pg">
+<svg class="globe rv" viewBox="0 0 300 300" aria-hidden="true"><defs><radialGradient id="oc" cx=".35" cy=".3"><stop offset="0" stop-color="#7fd4ff"/><stop offset=".6" stop-color="#1f6fd0"/><stop offset="1" stop-color="#0a1f5c"/></radialGradient><clipPath id="cp"><circle cx="150" cy="150" r="110"/></clipPath></defs>
+<circle class="halo" cx="150" cy="150" r="130" fill="none" stroke="#6be39a" stroke-width="2" opacity=".6"/>
+<circle cx="150" cy="150" r="110" fill="url(#oc)"/>
+<g clip-path="url(#cp)"><g class="land" fill="#4fcf7e"><path id="lm" d="M70 110q30-30 60-5t20 40-40 20-45 25-25-40z M170 70q30-10 40 20t-10 40-35-10zM190 180q25-10 30 20t-25 30-20-30z"/><use href="#lm" x="240"/><use href="#lm" x="480"/></g></g>
+<circle cx="150" cy="150" r="110" fill="none" stroke="#fff" strok
